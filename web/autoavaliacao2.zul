@@ -1,0 +1,61 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/menu.zul"?>
+<zk>
+    
+    <div id="autoavaliacao" self="@define(conteudo)"  apply="org.zkoss.bind.BindComposer" viewModel= "@id('vm') @init('controlpg.Controlpg')">
+
+        <window  >
+            <listbox width="1340px" height="400px" rows="5" mold="paging"  emptyMessage="Nao ha Questoes cadastradas." pageSize="7"
+                     model="@bind(vm.listaParamAutoAval)"> 
+                <listhead>
+                    <listheader>Codigo</listheader>
+                    <listheader>Questao</listheader>
+                    
+                    <listheader>Codigo</listheader>
+                    <listheader>Parametro</listheader>
+                    <listheader>Quantidade</listheader>
+                    
+                </listhead>
+                <template name="model">
+                    <listitem>
+    
+                        <listcell label="@load(each.idquestaoautoavaliacao.codigo)"></listcell>
+         
+                        <listcell label="@load(each.idquestaoautoavaliacao.descricao)"></listcell>
+                  
+                        <listcell label="@load(each.codigo)"></listcell>
+          
+                        <listcell label="@load(each.descricao)"></listcell>
+                        <listcell>
+                            <textbox forward="onChange=onClean" constraint="/[0-9]+/:valor invalido digite um numero"> </textbox>
+                        </listcell>
+       
+                    </listitem>
+                </template>
+           
+            </listbox>
+            <div>
+                <grid>
+                    <columns>
+                        <column label=""/>
+                        <column label=""/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <cell>
+                                Observacao:
+                                <textbox rows="5" width="300px"></textbox>
+                            </cell>	
+                            
+                        </row>
+                    </rows>
+                </grid>
+                <button label="Auto avaliar"></button>
+                <button label="Cancelar"></button>
+            </div>
+        </window>
+    </div>
+
+
+   
+
+</zk>
